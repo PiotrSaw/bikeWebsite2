@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Auth;
 <nav>
     <a href="{{ url('/') }}">Strona główna</a>
     <a href="{{ route('contact') }}">Kontakt</a>
+    @auth
     <a href="{{ route('reservation') }}">Rezerwacja</a>
     <a href="{{ route('check-reservation') }}">Sprawdź rezerwacje</a>
+    @endauth
     @guest
         <a href="{{ route('login') }}">Zaloguj</a>
         @if (Route::has('register'))
