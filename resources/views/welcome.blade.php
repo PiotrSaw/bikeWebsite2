@@ -20,9 +20,7 @@
         <header>
             <h1>Bike master</h1>
         </header>
-        <nav>
-            
-        </nav>
+        @include('layouts.nav')
         <div id="content">
             <div id="slideshow">
                 <img src="{{ asset('photos/rower1.jpg') }}" alt="image1" class="active">
