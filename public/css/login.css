@@ -1,0 +1,65 @@
+input[type="email"], input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 20px 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4500; /* Red accent */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e60000; /* Darker red accent on hover */
+}
+
+table {
+    margin: 30px auto;
+}
+
+a {
+    color: white;
+    text-decoration: none; /* usuwa podkreślenie */
+}
+
+a:hover {
+    color: rgba(255, 255, 255, 0.44);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:checked::before {
+    content: '\2714'; /* Unicode symbol for check mark */
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    color: #ff4500; /* Red accent */
+    background-color: #444;
+}
