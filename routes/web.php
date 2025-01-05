@@ -25,3 +25,7 @@ Route::get('/sprawdz-rezerwacje', function () {
 
 // Obsługa logowania i rejestracji
 Auth::routes();
+
+Route::get('/home', function () {
+    return redirect('/');
+});
