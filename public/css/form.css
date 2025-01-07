@@ -8,7 +8,6 @@ main {
 table{
     display: flex;
     justify-content: center;
-    padding-left: 24%;
 }
 
 td{
@@ -90,4 +89,19 @@ button:hover {
     width: 22px;
     height: 22px;
     margin-right: 10px;
+}
+
+.alert-danger{
+    width: 40%;
+    min-width: 400px;
+    background-color: #ff00006e;
+    font-size: 1.2em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
 }

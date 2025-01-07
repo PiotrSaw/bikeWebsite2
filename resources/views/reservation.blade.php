@@ -27,8 +27,17 @@ use Illuminate\Support\Facades\Auth;
             @endguest
             @auth
                 <h2>Wypełnij formularz żeby zarezerwować termin naprawy swojego roweru</h2>
+                @if ($errors->any())
+                    <div class="alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form role="form" method="post" action="{{ route('store') }}" id="rezervation-from">
-                @csrf
+                    @csrf
                     <table>
                         <tbody>
                             <tr>
@@ -40,7 +49,8 @@ use Illuminate\Support\Facades\Auth;
                                         value="{{ Auth::user()->email }}" readonly style="color: #676767;"></td>
                             </tr>
                             <tr>
-                                <td colspan="2"><input type="date" name="repair_date" id="data" placeholder="Wprowadź datę"></td>
+                                <td colspan="2"><input type="date" name="repair_date" id="data" placeholder="Wprowadź datę">
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
@@ -64,22 +74,20 @@ use Illuminate\Support\Facades\Auth;
                             <tr>
                                 <td><input type="checkbox" name="repair_items[]" value="koła" id="koła">Koła</td>
                                 <td><input type="checkbox" name="repair_items[]" value="pedały" id="pedały">Pedały</td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" name="repair_items[]" value="łańcuch" id="łańcuch">Łańcuch</td>
                                 <td><input type="checkbox" name="repair_items[]" value="zębatki" id="zębatki">Zębatki</td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" name="repair_items[]" value="hamulce" id="hamulce">Hamulce</td>
-                                <td><input type="checkbox" name="repair_items[]" value="kierownica" id="kierownica">Kierownica</td>
-                                <td></td>
+                                <td><input type="checkbox" name="repair_items[]" value="kierownica"
+                                        id="kierownica">Kierownica</td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" name="repair_items[]" value="przerzutki" id="przerzutki">Przerzutki</td>
+                                <td><input type="checkbox" name="repair_items[]" value="przerzutki"
+                                        id="przerzutki">Przerzutki</td>
                                 <td><input type="checkbox" name="repair_items[]" value="inne" id="inne">Inne</td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
@@ -88,20 +96,19 @@ use Illuminate\Support\Facades\Auth;
                             </tr>
                             <tr>
                                 <td><input type="radio" name="payment_method" value="gotówka" id="gotowka">Gotówka</td>
-                                <td><input type="radio" name="payment_method" value="kartaPłatnicza" id="kartaPlatnicza">Karta
+                                <td><input type="radio" name="payment_method" value="kartaPłatnicza"
+                                        id="kartaPlatnicza">Karta
                                     płatnicza</td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td><input type="radio" name="payment_method" value="blik" id="blik">Blik</td>
-                                <td><input type="radio" name="payment_method" value="kartaPodatunkowa" id="kartaPodatunkowa">Karta
+                                <td><input type="radio" name="payment_method" value="kartaPodatunkowa"
+                                        id="kartaPodatunkowa">Karta
                                     podarunkowa</td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <td><button id='rezerwuj'>Zarezerwuj</button></td>
                                 <td><button id='anuluj'>Anuluj</button></td>
-                                <td></td>
                             </tr>
                         </tbody>
                     </table>
