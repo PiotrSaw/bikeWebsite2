@@ -2,30 +2,36 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\RepairBookingController;
 
 
 Route::get('/', function () {
-    return view('welcome'); // Zamień na odpowiedni widok
+    return view('welcome'); 
 })->name('home');
 
 // Kontakt
 Route::get('/kontakt', function () {
-    return view('contact'); // Zamień na odpowiedni widok
+    return view('contact'); 
 })->name('contact');
 
 // Rezerwacja
-Route::get('/rezerwacja', function () {
-    return view('reservation'); // Zamień na odpowiedni widok
-})->name('reservation');
+Route::get('/rezerwacja', [RepairBookingController::class, 'create'])->name('reservation');
+Route::post('/rezerwacja', [RepairBookingController::class, 'store'])->name('store');
 
 // Sprawdź rezerwacje
 Route::get('/sprawdz-rezerwacje', function () {
-    return view('check-reservation'); // Zamień na odpowiedni widok
+    return view('check-reservation'); 
 })->name('check-reservation');
 
-// Obsługa logowania i rejestracji
-Auth::routes();
 
 Route::get('/home', function () {
     return redirect('/');
 });
+
+Route::get('/sukces', function () {
+    return view('success'); 
+})->name('success');
+
+
+// Obsługa logowania i rejestracji
+Auth::routes();
