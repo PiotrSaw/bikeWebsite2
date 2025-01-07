@@ -19,14 +19,17 @@ class RepairBookingController extends Controller
     public function store(Request $request)
     {
         // Podstawowa walidacja formularza:
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'repair_date' => 'required|date|after_or_equal:today', // Dodajemy walidację daty (po dzisiejszej dacie)
-            'bike_type' => 'required|string|max:255',
-            'repair_items' => 'required|array|min:1', // Musi być przynajmniej jedna naprawa
-            'payment_method' => 'required|in:gotówka,kartaPłatnicza,blik,kartaPodatunkowa',
-        ]);
+            $request->validate([
+                'repair_date' => 'required|date',
+                'bike_type' => 'required',
+                'repair_items' => 'required|array',
+                'payment_method' => 'required',
+            ], [
+                'repair_date.required' => 'Pole "Data naprawy" jest wymagane.',
+                'bike_type.required' => 'Pole "Typ roweru" jest wymagane.',
+                'repair_items.required' => 'Pole "Co chcesz naprawiać?" jest wymagane.',
+                'payment_method.required' => 'Pole "Sposób płatności" jest wymagane.',
+            ]);
     
         if (Auth::user() == null) {
             return redirect()->route('home'); // jeśli użytkownik nie jest zalogowany
