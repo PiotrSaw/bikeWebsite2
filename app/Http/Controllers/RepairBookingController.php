@@ -16,16 +16,19 @@ class RepairBookingController extends Controller
 
         // Sprawdź rolę użytkownika
         if ($user->status === 'ADMIN') {
-            $repair_bookings = RepairBooking::whereDate('repair_date', '>=', Carbon::now()->toDateString())->get();
-            $repair_bookings_archival = RepairBooking::whereDate('repair_date', '<', Carbon::now()->toDateString())->get();
+            $repair_bookings = RepairBooking::whereDate('repair_date', '>=', Carbon::now()->toDateString())
+            ->orderBy('repair_date', 'asc')->get();
+
+            $repair_bookings_archival = RepairBooking::whereDate('repair_date', '<', Carbon::now()->toDateString())
+            ->orderBy('repair_date', 'desc')->get();
         } else {
             $repair_bookings = RepairBooking::where('user_id', $user->id)
                 ->whereDate('repair_date', '>=', Carbon::now()->toDateString())
-                ->get();
+                ->orderBy('repair_date', 'asc')->get();
 
             $repair_bookings_archival = RepairBooking::where('user_id', $user->id)
                 ->whereDate('repair_date', '<', Carbon::now()->toDateString())
-                ->get();
+                ->orderBy('repair_date', 'desc')->get();
         }
 
 
@@ -44,12 +47,17 @@ class RepairBookingController extends Controller
     {
         // Podstawowa walidacja formularza:
         $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
             'repair_date' => 'required|date|after_or_equal:today',
             'repair_date.after_or_equal' => 'Nie można podać daty z przeszłości.',
             'bike_type' => 'required',
             'repair_items' => 'required|array',
             'payment_method' => 'required',
         ], [
+            'name.required' => 'Pole "Imię" jest wymagane.',
+            'email.required' => 'Pole "Email" jest wymagane.',
+            'email.email' => 'Pole "Email" musi być poprawnym adresem email.',
             'repair_date.required' => 'Pole "Data naprawy" jest wymagane.',
             'bike_type.required' => 'Pole "Typ roweru" jest wymagane.',
             'repair_items.required' => 'Pole "Co chcesz naprawiać?" jest wymagane.',
@@ -112,11 +120,16 @@ class RepairBookingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
             'repair_date' => 'required|date|after_or_equal:today',
             'bike_type' => 'required',
             'repair_items' => 'required|array',
             'payment_method' => 'required',
         ], [
+            'name.required' => 'Pole "Imię" jest wymagane.',
+            'email.required' => 'Pole "Email" jest wymagane.',
+            'email.email' => 'Pole "Email" musi być poprawnym adresem email.',
             'repair_date.required' => 'Pole "Data naprawy" jest wymagane.',
             'bike_type.required' => 'Pole "Typ roweru" jest wymagane.',
             'repair_items.required' => 'Pole "Co chcesz naprawiać?" jest wymagane.',

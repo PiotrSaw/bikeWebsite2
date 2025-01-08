@@ -151,7 +151,7 @@ use Illuminate\Support\Facades\Auth;
                                 </td>
                             </tr>
                             <tr>
-                                <td><button id='rezerwuj'>Zarezerwuj</button></td>
+                                <td><button id='rezerwuj'>Zapisz</button></td>
                                 <td><a href="{{ route('check-reservation') }}" id="anuluj" class="button">Anuluj</a></td>
                             </tr>
                         </tbody>
