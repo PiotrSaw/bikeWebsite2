@@ -41,12 +41,24 @@ use Illuminate\Support\Facades\Auth;
                     <table>
                         <tbody>
                             <tr>
-                                <td colspan="2"><input type="text" name="name" id="imie" placeholder="Wprowadź imię"
-                                        value="{{ Auth::user()->name }}" readonly style="color: #676767;"></td>
+                                <td colspan="2">
+                                    @if(Auth::user()->status == 'ADMIN')
+                                    <input type="text" name="name" id="imie" placeholder="Wprowadź imię">
+                                    @else
+                                    <input type="text" name="name" id="imie" placeholder="Wprowadź imię"
+                                        value="{{ Auth::user()->name }}" readonly style="color: #676767;">
+                                    @endif
+                                    </td>
                             </tr>
                             <tr>
-                                <td colspan="2"><input type="text" name="email" id="email" placeholder="Wprowadź email"
-                                        value="{{ Auth::user()->email }}" readonly style="color: #676767;"></td>
+                                <td colspan="2">
+                                    @if(Auth::user()->status == 'ADMIN')
+                                    <input type="text" name="email" id="email" placeholder="Wprowadź email">
+                                    @else
+                                    <input type="text" name="email" id="email" placeholder="Wprowadź email"
+                                        value="{{ Auth::user()->email }}" readonly style="color: #676767;">
+                                    @endif
+                                    </td>
                             </tr>
                             <tr>
                                 <td colspan="2"><input type="date" name="repair_date" id="data" placeholder="Wprowadź datę">
@@ -108,7 +120,7 @@ use Illuminate\Support\Facades\Auth;
                             </tr>
                             <tr>
                                 <td><button id='rezerwuj'>Zarezerwuj</button></td>
-                                <td><button id='anuluj'>Anuluj</button></td>
+                                <td><a href="{{ route(name: 'reservation') }}" id="anuluj" class="button">Anuluj</a></td>
                             </tr>
                         </tbody>
                     </table>

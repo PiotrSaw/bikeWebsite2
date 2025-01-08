@@ -19,9 +19,7 @@ Route::get('/rezerwacja', [RepairBookingController::class, 'create'])->name('res
 Route::post('/rezerwacja', [RepairBookingController::class, 'store'])->name('store');
 
 // Sprawdź rezerwacje
-Route::get('/sprawdz-rezerwacje', function () {
-    return view('check-reservation'); 
-})->name('check-reservation');
+Route::get('/sprawdz-rezerwacje', [RepairBookingController::class, 'index'])->name('check-reservation');
 
 
 Route::get('/home', function () {
@@ -35,3 +33,7 @@ Route::get('/sukces', function () {
 
 // Obsługa logowania i rejestracji
 Auth::routes();
+
+Route::get('/edit/{id}', [RepairBookingController::class,'edit'])->name('edit');
+Route::get('/delete/{id}', [RepairBookingController::class,'destroy'])->name('delete');
+Route::post('/update/{id}', [RepairBookingController::class,'update'])->name('update');

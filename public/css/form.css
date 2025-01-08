@@ -64,7 +64,7 @@ input[type="checkbox"]:checked::before, input[type="radio"]:checked::before {
     background-color: #444;
 }
 /* Przyciski */
-button {
+button, td a {
     padding: 10px 20px;
     margin: 20px 5px;
     border: none;
@@ -74,9 +74,10 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
-button:hover {
+button:hover, td a:hover {
     background-color: #e60000; /* Darker red accent on hover */
 }
 
