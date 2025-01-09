@@ -23,58 +23,63 @@ use Illuminate\Support\Facades\Auth;
 
         @auth
             <main id="przegladarka">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Email</th>
-                            <th>Typ roweru</th>
-                            <th>Data naprawy</th>
-                            <th>Naprawiane części</th>
-                            <th>Sposób zapłaty</th>
-                            <th></th><th></th>
-                        </tr>
-                    <tbody>
-                        @foreach ($repair_bookings as $reservation)
+                <div class="table-container">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $reservation->email }}</td>
-                                <td>{{ $reservation->bike_type }}</td>
-                                <td>{{ $reservation->repair_date }}</td>
-                                <td>{{ $reservation->repair_items }}</td>
-                                <td>{{ $reservation->payment_method }}</td>
-                                <td><a href="{{ route('edit', $reservation) }}" title="Edytuj">Edytuj</a></td>
-                                <td><a href="{{ route('delete', $reservation->id) }}"
-                                    onclick="return confirm('Jesteś pewien?')" title="Skasuj">Usuń</a></td>
+                                <th>Email</th>
+                                <th>Typ roweru</th>
+                                <th>Data naprawy</th>
+                                <th>Naprawiane części</th>
+                                <th>Sposób zapłaty</th>
+                                <th></th>
+                                <th></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        <tbody>
+                            @foreach ($repair_bookings as $reservation)
+                                <tr>
+                                    <td>{{ $reservation->email }}</td>
+                                    <td>{{ $reservation->bike_type }}</td>
+                                    <td>{{ $reservation->repair_date }}</td>
+                                    <td>{{ $reservation->repair_items }}</td>
+                                    <td>{{ $reservation->payment_method }}</td>
+                                    <td><a href="{{ route('edit', $reservation) }}" title="Edytuj">Edytuj</a></td>
+                                    <td><a href="{{ route('delete', $reservation->id) }}"
+                                            onclick="return confirm('Jesteś pewien?')" title="Skasuj">Usuń</a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2>Archiwalne rezerwacje</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id rezerwacji</th>
-                            <th>Nazwa użytkownika</th>
-                            <th>Email</th>
-                            <th>Typ roweru</th>
-                            <th>Data naprawy</th>
-                            <th>Naprawiane części</th>
-                            <th>Sposób zapłaty</th>
-                        </tr>
-                    <tbody>
-                        @foreach ($repair_bookings_archival as $reservation)
+                <div class="table-container">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $reservation->id }}</td>
-                                <td>{{ $reservation->name }}</td>
-                                <td>{{ $reservation->email }}</td>
-                                <td>{{ $reservation->bike_type }}</td>
-                                <td>{{ $reservation->repair_date }}</td>
-                                <td>{{ $reservation->repair_items }}</td>
-                                <td>{{ $reservation->payment_method }}</td>
+                                <th>Id rezerwacji</th>
+                                <th>Nazwa użytkownika</th>
+                                <th>Email</th>
+                                <th>Typ roweru</th>
+                                <th>Data naprawy</th>
+                                <th>Naprawiane części</th>
+                                <th>Sposób zapłaty</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        <tbody>
+                            @foreach ($repair_bookings_archival as $reservation)
+                                <tr>
+                                    <td>{{ $reservation->id }}</td>
+                                    <td>{{ $reservation->name }}</td>
+                                    <td>{{ $reservation->email }}</td>
+                                    <td>{{ $reservation->bike_type }}</td>
+                                    <td>{{ $reservation->repair_date }}</td>
+                                    <td>{{ $reservation->repair_items }}</td>
+                                    <td>{{ $reservation->payment_method }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </main>
         @endauth
 

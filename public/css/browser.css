@@ -89,3 +89,22 @@ input[type="password"]::placeholder, input[type="text"]::placeholder{
     margin-left: 20px;
     width: 70%;
 }
+
+
+/* Kontener z przewijaniem poziomym */
+.table-container {
+    overflow-x: auto; /* Włącza przewijanie poziome */
+    margin: 20px 0; /* Odstęp od góry i dołu */
+}
+
+/* Zapytanie medialne dla ekranów poniżej 1450px */
+@media (max-width: 1450px) {
+    .table-container table {
+        min-width: 1000px; /* Minimalna szerokość tabeli, aby wymusić przewijanie */
+    }
+
+    .table-container {
+        border: 1px solid #555; /* Opcjonalna ramka dla tabeli w przewijanym obszarze */
+        border-radius: 10px;
+    }
+}
