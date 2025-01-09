@@ -102,9 +102,4 @@ input[type="password"]::placeholder, input[type="text"]::placeholder{
     .table-container table {
         min-width: 1000px; /* Minimalna szerokość tabeli, aby wymusić przewijanie */
     }
-
-    .table-container {
-        border: 1px solid #555; /* Opcjonalna ramka dla tabeli w przewijanym obszarze */
-        border-radius: 10px;
-    }
 }
