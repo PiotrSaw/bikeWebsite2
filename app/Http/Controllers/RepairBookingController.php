@@ -157,8 +157,6 @@ class RepairBookingController extends Controller
 
         $reservation = RepairBooking::find($id);
 
-        // Wypełniamy model danymi z formularza
-        $reservation->user_id = Auth::id();  // ID aktualnie zalogowanego użytkownika
         $reservation->name = $request->input('name');
         $reservation->email = $request->input('email');
         $reservation->repair_date = $repair_date;
