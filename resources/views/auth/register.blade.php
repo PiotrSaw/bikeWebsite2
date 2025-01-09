@@ -5,7 +5,8 @@
 <div class="container">
     <h2>{{ __('Zarejestruj się') }}</h2>
     <form method="POST" action="{{ route('register') }}">
-        @csrf
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
         <table>
             <tbody>
@@ -29,7 +30,8 @@
                         <label for="email" class="col-form-label">{{ __('Adres email') }}</label>
                     </td>
                     <td>
-                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input id="email" type="email" name="email" value="{{ old('email') }}" required
+                            autocomplete="email">
                         @error('email')
                             <span role="alert">
                                 <strong>{{ $message }}</strong>
@@ -61,9 +63,9 @@
                 </tr>
             </tbody>
         </table>
-                <button type="submit">
-                    {{ __('Zarejestruj się') }}
-                </button>
+        <button type="submit">
+            {{ __('Zarejestruj się') }}
+        </button>
     </form>
 </div>
 @endsection

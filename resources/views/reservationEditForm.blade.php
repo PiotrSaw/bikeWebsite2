@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Auth;
 <body>
     <div id="kontener">
         <header>
-            <h1>Zarezerwuj naprawę już dzisiaj</h1>
+            <h1>Edytuj rezerwację</h1>
         </header>
         @include('layouts.nav')
 
         <main>
             @guest
-                <h2>Zaloguj się żeby zarezerwować termin naprawy swojego roweru</h2>
+                <h2>Zaloguj się żeby edytować swoją rezerwację</h2>
             @endguest
             @auth
-                <h2>Wypełnij formularz żeby zarezerwować termin naprawy swojego roweru</h2>
+                <h2>Wypełnij formularz żeby edytować swoją rezerwację</h2>
                 @if ($errors->any())
                     <div class="alert-danger">
                         <ul>
@@ -36,8 +36,8 @@ use Illuminate\Support\Facades\Auth;
                         </ul>
                     </div>
                 @endif
-                <form role="form" method="post" action="{{ route('update', $reservation) }}" id="rezervation-from">
-                    @csrf
+                <form method="post" action="{{ route('update', $reservation) }}" id="rezervation-from">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <table>
                         <tbody>
                             <tr>
@@ -64,19 +64,19 @@ use Illuminate\Support\Facades\Auth;
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <input type="date" name="repair_date" id="data" placeholder="Wprowadź datę" value="{{ $reservation->repair_date }}">
+                                    <input type="date" name="repair_date" id="data" value="{{ $reservation->repair_date }}">
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <select id="typ" name="bike_type" value="{{ $reservation->bike_type }}">
-                                        <option value="górski">Górski</option>
-                                        <option value="miejski">Miejski</option>
-                                        <option value="trekkingowy">Trekkingowy</option>
-                                        <option value="szosowy">Szosowy</option>
-                                        <option value="crossowy">Crossowy</option>
-                                        <option value="bmx">BMX</option>
-                                        <option value="dziecięcy">Dziecięcy</option>
+                                    <select id="typ" name="bike_type">
+                                        <option value="górski" {{($reservation->bike_type == 'górski') ? 'selected' : ''}}>Górski</option>
+                                        <option value="miejski" {{($reservation->bike_type == 'miejski') ? 'selected' : ''}}>Miejski</option>
+                                        <option value="trekkingowy" {{($reservation->bike_type == 'trekkingowy') ? 'selected' : ''}}>Trekkingowy</option>
+                                        <option value="szosowy" {{($reservation->bike_type == 'szosowy') ? 'selected' : ''}}>Szosowy</option>
+                                        <option value="crossowy" {{($reservation->bike_type == 'crossowy') ? 'selected' : ''}}>Crossowy</option>
+                                        <option value="bmx" {{($reservation->bike_type == 'bmx') ? 'selected' : ''}}>BMX</option>
+                                        <option value="dziecięcy" {{($reservation->bike_type == 'dziecięcy') ? 'selected' : ''}}>Dziecięcy</option>
                                     </select>
                                 </td>
                             </tr>

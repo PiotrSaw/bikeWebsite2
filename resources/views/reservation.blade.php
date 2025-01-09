@@ -36,32 +36,32 @@ use Illuminate\Support\Facades\Auth;
                         </ul>
                     </div>
                 @endif
-                <form role="form" method="post" action="{{ route('store') }}" id="rezervation-from">
-                    @csrf
+                <form method="post" action="{{ route('store') }}" id="rezervation-from">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <table>
                         <tbody>
                             <tr>
                                 <td colspan="2">
                                     @if(Auth::user()->status == 'ADMIN')
-                                    <input type="text" name="name" id="imie" placeholder="Wprowadź imię">
+                                        <input type="text" name="name" id="imie" placeholder="Wprowadź imię">
                                     @else
-                                    <input type="text" name="name" id="imie" placeholder="Wprowadź imię"
-                                        value="{{ Auth::user()->name }}" readonly style="color: #676767;">
+                                        <input type="text" name="name" id="imie" placeholder="Wprowadź imię"
+                                            value="{{ Auth::user()->name }}" readonly style="color: #676767;">
                                     @endif
-                                    </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
                                     @if(Auth::user()->status == 'ADMIN')
-                                    <input type="text" name="email" id="email" placeholder="Wprowadź email">
+                                        <input type="text" name="email" id="email" placeholder="Wprowadź email">
                                     @else
-                                    <input type="text" name="email" id="email" placeholder="Wprowadź email"
-                                        value="{{ Auth::user()->email }}" readonly style="color: #676767;">
+                                        <input type="text" name="email" id="email" placeholder="Wprowadź email"
+                                            value="{{ Auth::user()->email }}" readonly style="color: #676767;">
                                     @endif
-                                    </td>
+                                </td>
                             </tr>
                             <tr>
-                                <td colspan="2"><input type="date" name="repair_date" id="data" placeholder="Wprowadź datę">
+                                <td colspan="2"><input type="date" name="repair_date" id="data">
                                 </td>
                             </tr>
                             <tr>

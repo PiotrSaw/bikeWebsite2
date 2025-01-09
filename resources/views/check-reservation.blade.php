@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 <body>
     <div id="kontener">
         <header>
-            <h1 id="naglowek">Obecne rezerwacje</h1>
+            <h1>Obecne rezerwacje</h1>
         </header>
         @include('layouts.nav')
 
@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Auth;
                     </tbody>
                 </table>
 
-                <h2 id="naglowek">Archiwalne rezerwacje</h2>
+                <h2>Archiwalne rezerwacje</h2>
                 <table>
                     <thead>
                         <tr>

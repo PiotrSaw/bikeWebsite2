@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div id="komorka" class="kontakt">
-                    <img src="{{asset('icons/telefon komórkowy.png')}}" alt="ikona komórka">
-                    <div calss="tresc">
+                    <img src="{{asset('icons/telefonKomorkowy.png')}}" alt="ikona komórka">
+                    <div class="tresc">
                         <p>telefon komórkowy: 123-456-789</p>
                         <p>telefon komórkowy: 111-222-333</p>
                     </div>

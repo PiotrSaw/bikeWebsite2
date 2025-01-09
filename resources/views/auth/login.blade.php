@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 <div>
     <h2>{{ __('Zaloguj się') }}</h2>
     <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div>
             <table>
                 <tbody>
