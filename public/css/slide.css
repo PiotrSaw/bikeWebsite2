@@ -27,3 +27,9 @@
 #slideshow img.last-active {
     z-index: 9;
 }
+
+@media (max-width: 600px) {
+    #slideshow{
+        height: 200px;
+    }
+}
